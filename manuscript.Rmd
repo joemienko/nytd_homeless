@@ -1,0 +1,532 @@
+---
+title: |
+  RMarkdown Template for Managing  
+  Academic Affiliations 
+subtitle: |
+  Also Deals with Cross References and  
+  Reference Abbreviations for MS-Word Output
+author:
+  - Duke A Caboom, MD:
+      email: duke.a.caboom@utuktoyaktuk.edu
+      institute: [UofT]
+      correspondence: true
+  - Justin d'Ottawa, PhD:
+      email: justin@neverready.ca
+      institute: [UofO]
+      correspondence: false
+institute:
+  - UofT: University of Tuktoyaktuk, CXVG+62 Tuktoyaktuk, Inuvik, Unorganized, NT Canada
+  - UofO: University of Ottawa, 75 Laurier Ave E, Ottawa, ON K1N 6N5, Canada
+abstract: |
+  **Introduction**: There's a big scientific problem out there. I know how to fix it.
+  **Methods**: My experiments are pure genius.
+  **Results**: Now you have your proof.
+  **Conclusion**: Give me more grant money.
+journal: "An awesome journal"
+date: ""
+toc: false
+output:
+ bookdown::word_document2:
+    pandoc_args:
+      - --csl=Extras/apa.csl
+      - --reference-doc=Extras/apa.docx 
+bibliography: "Extras/citations.bib"
+keywords: "CRAN, R, RMarkdown, RStudio, YAML"
+---
+
+##### This is my abstract. I will talk about my abstract here. You can refer to calculations in your text. For example, the cosine of $\pi$ radians is. In fact, you can refer to any R object (e.g., the mean and standard deviation of a variable.).
+
+```{css}
+/* This is css, which formats the html using whatever styles you wish.*/
+
+@import "http://fonts.googleapis.com/css?family=Anonymous+Pro:400,400italic,700,700italic&subset=latin,latin-ext";
+@import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700);
+
+
+body {
+    margin:0 auto;
+    font-family: "Times New Roman", Times, serif;
+    font-size:1em;
+    text-align:left;
+    max-width:6.5in;
+    line-height: 1.25em;
+}
+
+table {
+    border-collapse: collapse;
+	border-bottom:1px solid #000;
+	margin:auto;
+}
+
+th, td{padding:5px;}
+
+
+
+p {
+  text-align:left;
+	text-indent: 2em;
+	padding: 0;
+	margin:0;
+}
+
+li p {
+  text-indent:0em;
+  }
+
+.references p {padding-left: 2.5em ;
+    text-indent: -2.5em;}
+
+.level1 h1 {font-size:1em;}
+
+.level2 h2 {font-size:1em;}
+
+.level3 h3 {font-size:1em;}
+
+.level4
+ h4 {font-size:1em;}
+
+h1 {
+    text-align:center;
+}
+
+h2, h3, h4, h5 {
+text-align: left;
+}
+
+h3, h4, h5 {
+margin-left: 2em;
+}
+
+.author , .date, .author_afil h4 {text-align:left;
+		margin-left:0;
+		font-weight:normal;
+		font-style:normal;
+		padding:0px;
+		margin:0px;
+		}
+		
+#header h4 em  {
+		font-weight:normal;
+		font-style:normal;
+		}
+		
+
+
+blockquote p {text-indent:0em;
+			margin-left:2.5em;}
+
+blockquote p + p {
+text-indent: 2.5em;
+}
+
+pre, img {
+max-width: 100%;
+}
+
+pre {
+overflow-x: auto;
+}
+
+code {
+    font-family:"Anonymous Pro",monospace;
+	text-align:left;
+	padding:5px;
+	font-size: 92%;
+	border: 1px solid #ccc;
+}
+
+pre code {
+font-size: 0.9em;
+font-family: 'Source Code Pro' !important;
+text-align: left;
+display: block; padding: 0.5em;
+}
+
+code.r {
+font-family: 'Inconsolata' !important;
+font-size: 1.2em;
+background-color: rgba(160, 160, 160, 0.2);
+}
+sup,sub {
+    position: relative;
+    vertical-align: 0;
+}
+
+sup {
+    bottom: .4em
+}
+
+sub {
+    top:.4em
+}
+
+.header th {
+    border-bottom:1px solid #000;
+    border-top: 1px solid #000;
+	font-weight: normal;
+}
+```
+
+**Note**: In order to compile the RMarkdown document, download [this RMarkdown document][id1], along with following files:
+
+* [APA.docx][id2] This file is a template to create MS Word documents in APA Style. The template is a work in progress and thus does not get everything exactly right.
+* [apa.csl][id4] This file tells RMarkdown how to format citations in APA Style.
+* [citations.bib][id5] This file contains a few citations in BibTeX format.
+
+Be sure to save them in the same folder.
+
+# RMarkdown
+
+[Markdown][id6] is a really simple way to format documents. [RMarkdown][id7] is a variant of Markdown that works in [RStudio][id8].
+
+With RMarkdown, you can do some really neat things. Like [this](http://my.ilstu.edu/~wjschne/RESCAE.html).
+
+
+# Headers
+
+```
+# This is a Level 1 header
+```
+
+# This is a Level 1 header
+
+```
+## This is a Level 2 header
+```
+
+##This is a Level 2 header
+
+```
+### Guess which level header this is!
+```
+
+### Guess which level header this is!
+
+```
+This is a regular paragraph. Extra       spaces between words are eliminated.    
+Even though this    
+sentence is broken    
+across many lines,    
+it is    
+grouped with the text    
+above it.
+```
+
+This is a regular paragraph. Extra       spaces between words are eliminated.
+Even though this 
+sentence is broken
+across many lines, 
+it is
+grouped with the text
+above it.
+
+```
+Put an empty line between paragraphs.
+
+You can't see them but if you put 2 or more spaces  
+at the end  
+of a line,  
+there is a line break.
+```
+
+Put an empty line between paragraphs.
+
+You can't see them but if you put 2 or more spaces  
+at the end  
+of a line,  
+there is a line break.
+
+
+
+# Formatting text
+
+```
+*This is italicized.*
+```
+
+*This is italicized.*
+
+```
+**This is bolded.**
+```
+
+**This is bolded.**
+
+```
+~~Strikethrough~~
+```
+
+~~Strikethrough~~
+
+```
+Superscript^2^
+```
+
+Superscript^2^
+
+```
+Subscript~2~
+```
+
+Subscript~2~
+
+```
+>This is for blockquotes.
+>It can go on for 
+>many
+>lines.
+>
+>This is the second paragraph in a blockquote. 
+In my .css file, I have formatted it so that it will be indented.
+```
+>This is for blockquotes.
+>It can go on for 
+>many
+>lines.
+>
+>This is the second paragraph in a blockquote. 
+>In my .css code, I have formatted it so that it will be indented.
+
+```
+Text enclosed in three backquotes (```) will 
+appear in a monospace type. 
+It is especially good for displaying computer code.
+It will appear exactly 
+as
+   you 
+       type it,
+without the typical formatting.
+
+For example,
+*normally this would be italicized.*
+```
+
+# Lists
+
+Let's make an unordered list:
+
+```
+* First bullet point
+* Second bullet point
+    - Indented bullet point (2 tabs or 4 spaces)
+    - Another indented bullet point
+        + Further indentation (4 tabs or 8 spaces)
+```
+
+* First bullet point
+* Second bullet point
+    - Indented bullet point (2 tabs or 4 spaces)
+    - Another indented bullet point
+        + Further indentation (4 tabs or 8 spaces)
+
+Let's make an ordered list:
+
+```
+1. My first topic
+    1. Sub topic 1
+    2. Sub topic 2
+2. My second topic
+    * Subtopic (2 tabs or 4 spaces)
+    * Another subtopic    
+    This is a indented paragraph in the middle of a list (2 tabs or 4 spaces).
+    * Yet another subtopic
+3. My third topic
+```
+
+1. My first topic
+    1. Sub topic 1
+    2. Sub topic 2
+2. My second topic
+    * Subtopic (2 tabs or 4 spaces)
+    * Another subtopic    
+    This is a indented paragraph in the middle of a list (2 tabs or 4 spaces).
+    * Yet another subtopic
+3. My third topic
+
+
+# Links
+
+```
+[This is a link to my homepage.](http://my.ilstu.edu/~wjschne/)
+```
+
+[This is a link to my homepage.](http://my.ilstu.edu/~wjschne/)
+
+# Images
+
+```
+![Ryan, Joel, and Jane](http://my.ilstu.edu/~wjschne/RyanJoelJane.jpg)
+```
+
+![Ryan, Joel, and Jane](http://my.ilstu.edu/~wjschne/RyanJoelJane.jpg)
+
+# Equations using LaTeX
+
+```
+$$f(X)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{X-\mu}{\sigma}\right)^2}$$
+```
+
+$$f(X)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{X-\mu}{\sigma}\right)^2}$$
+# Simple Tables
+```
+Left        |Center         |Right
+:-----------|:-------------:|------------:
+1           |2              |3            
+4           |5              |6            
+7           |8              |9     
+```
+
+
+Left        |Center         |Right
+:-----------|:-------------:|------------:
+1           |2              |3            
+4           |5              |6            
+7           |8              |9            
+
+# Combining R and Markdown
+
+## R code chunks
+
+This code will run and will appear in the document:
+
+```{r}
+EvenNumbersUnder100 <- seq(2,98,2)
+```
+
+This code chunk will run but it will not appear in the document:
+
+```{r,echo=FALSE}
+X <- cos(pi)
+```
+
+This code chunk will appear in the document but it will not run:
+
+```{r,eval=FALSE}
+Y<-tan(pi/4)
+```
+
+## Inline R code
+
+```
+You can refer to calculations in your text. 
+For example, the cosine of $\pi$ radians is `r cos(pi)`. 
+In fact, you can refer to any R object 
+(e.g., the mean and standard deviation of a variable.)
+```
+
+You can refer to calculations in your text. For example, the cosine of $\pi$ radians is `r cos(pi)`. In fact, you can refer to any R object (e.g., the mean and standard deviation of a variable.)
+
+## Let's make a simple plot with R:
+
+```{r}
+# Sequence of integers from 0 to 20
+x <- 0:20
+# The probability mass function of the Poisson distribution
+y <- dpois(x, lambda = 3)
+# Plot the distribution
+plot(y ~ x)
+```
+
+## Let's make the plot ready for publication:
+
+```{r}
+plot(y ~ x, 
+     main = expression("Poisson Distribution " * (lambda == 3)), # Title
+     xlab = "Sample Space", # x-axis label
+     ylab = "Probability", # y-axis label
+     type = "b", # plot both lines and points
+     bty = "n", # No box around plot
+     lty = 3, # Dotted lines
+     col = "royalblue2", # Color of lines and points
+     pch = 19, # Points are filled circles
+     las = 1, # All labels are horizontal
+     family = "serif") # Font family
+```
+
+## APA Formatted tables!
+
+```{r}
+# Sample size
+n <- 1000 
+# Normal variate
+g <- rnorm(n)
+# Correlated variates
+s1 <- g + rnorm(n) 
+s2 <- g + rnorm(n)
+# Create data frame
+d <- data.frame(g,s1,s2)
+# Correlation matrix
+dcor <- cor(d)
+# Format to 2 digits
+dcor <- formatC(dcor, digits = 2, format = "f")
+# Remove lower triangle
+dcor[lower.tri(dcor, diag = TRUE)] <- "" 
+# Remove leading zeroes
+dcor <- gsub("0.",".",dcor)
+# Remove last row and first column
+dcor <- dcor[nrow(dcor)*-1,-1]
+# Make table with centered columns
+knitr::kable(dcor, align = "c", digits = 2) 
+```
+
+That seems like a lot of work to get a little table. I could have cut and paste those numbers into a table in MS Word much faster! However, many correlation matrices are large and require quite a bit of attention to get them into APA format. 
+
+If you drop the above code into a custom function and modify it slightly, you have a very useful function for creating correlation tables in APA format. 
+
+```{r}
+CorTable <- function(d,caption = "Correlation Matrix", digits = 2, align = "c", ...){
+# Correlation matrix
+dcor <- cor(d)
+# Format to 2 digits
+dcor <- formatC(dcor, digits = 2, format = "f")
+# Remove lower triangle
+dcor[lower.tri(dcor, diag = TRUE)] <- "" 
+# Remove leading zeroes
+dcor <- gsub("0.",".",dcor)
+# Remove last row and first column
+dcor <- dcor[nrow(dcor)*-1,-1]
+# Make table with centered columns
+knitr::kable(dcor, caption = caption, digits = digits, align = align, ...)  
+}
+```
+
+Let's load a data set with 10 variables:
+
+```{r, message = FALSE}
+x10 <- readr::read_csv("http://my.ilstu.edu/~wjschne/444/x10.csv")
+```
+
+Now you can create large correlation tables with just one line of code.
+
+```{r}
+CorTable(x10)
+```
+
+For now, there is no expectation that you should be able to create a function like this. The point is that RMarkdown is a powerful tool that can make you much more productive than people who cut and paste all their analyses into the write-up.
+
+# Citations
+
+As explained [here][id9], if you use the bibliography tag, you can insert citations with the @ symbol and the citation's unique ID. A variety of citation file formats are supported and a huge number of citation styles are [available][id10]. I am using the [BibTeX file format][id11] with the [APA (6^th^ Edition) citation style][id12].
+
+For example, here are some papers of mine [@schneider2013principles; @kahn2013s]. In this paper, @schneider2013if [p. 186-187] says a bunch of stuff.
+
+Tools like these make managing references much, much easier than doing it all by hand. The references below appear like magic, all perfectly formatted.
+
+# References
+
+<!---
+Below are reference links. They refer to links specified by the id tags elsewhere in the document. The advantage of using reference links is that they make the markdown document easier to read. That is, long links in the middle of a document are easier to write but are ugly to look at and interrupt the flow of the text.
+-->
+[id1]: http://my.ilstu.edu/~wjschne/442/IntroductiontoRMarkdown.Rmd "Introduction to Markdown"
+[id2]: http://my.ilstu.edu/~wjschne/442/APA.docx "APA Template in Word"
+[id3]: http://my.ilstu.edu/~wjschne/442/APAStyle.css "APA .css file"
+[id4]: http://my.ilstu.edu/~wjschne/442/apa.csl "APA .cls file"
+[id5]: http://my.ilstu.edu/~wjschne/442/citations.bib "References in BibTex"
+[id6]: http://daringfireball.net/projects/markdown/basics "Markdown Basics"
+[id7]: http://rmarkdown.rstudio.com/ "RMarkdown in RStudio"
+[id8]: http://www.rstudio.com/ "RStudio"
+[id9]: http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html "RMarkdown Citations"
+[id10]: https://zotero.org/styles "Zotero"
+[id11]: http://www.bibtex.org/ "BibTex"
+[id12]: https://zotero.org/styles/apa "APA citation style in .cls file"
